@@ -7,7 +7,7 @@
 		}
 
 		public function index(){
-			$mhs = $this->Model->get_mhs()->result();
+			$mhs = $this->Model->get_mhs();
 			$data = array(
 				'mhs'=>$mhs
 			);

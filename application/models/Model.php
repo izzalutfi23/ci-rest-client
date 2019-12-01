@@ -1,7 +1,20 @@
 <?php 
+
+	use GuzzleHttp\Client;
+
+
 	class Model extends CI_Model{
 		public function get_mhs(){
-			return $this->db->get('mahasiswa');
+			$client = new Client();
+			$response = $client->request('GET', 'http://localhost/ci-rest-server/api/mahasiswa', [
+				'auth'=>['admin', '1234'],
+				'query'=>[
+					'KEY'=>'izza123'
+				]
+			]);
+
+			$result = json_decode($response->getBody()->getContents(), true);
+			return $result['data'];
 		}
 
 		public function pinput($data){
