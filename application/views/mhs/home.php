@@ -51,18 +51,18 @@
 				<tbody>
 					<?php 
 					$no=1;
-					foreach ($mhs as $m) {
+					foreach ($mhs as $mmhs => $m) {
 						?>
 						<tr>
 							<th scope="row"><?=$no++?></th>
-							<td><?=$m->nim;?></td>
-							<td><?=$m->nama;?></td>
-							<td><?=$m->alamat;?></td>
-							<td><?=$m->tgl_lahir;?></td>
+							<td><?=$m['nim'];?></td>
+							<td><?=$m['nama'];?></td>
+							<td><?=$m['alamat'];?></td>
+							<td><?=$m['tgl_lahir'];?></td>
 							<td>
-								<button class="btn btn-primary" data-toggle="modal" data-target="#edit<?=$m->nama;?>">Edit</button>
+								<button class="btn btn-primary" data-toggle="modal" data-target="#edit<?=$no;?>">Edit</button>
 								<!-- Modal Edit data -->
-								<div class="modal fade" id="edit<?=$m->nama;?>" role="dialog">
+								<div class="modal fade" id="edit<?=$no;?>" role="dialog">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
@@ -75,19 +75,19 @@
 												<form action="<?=base_url('mahasiswa/edit')?>" method="post">
 													<div class="form-group">
 														<label for="exampleInputEmail1">NIM</label>
-														<input type="text" name="nim" readonly="readonly" class="form-control" value="<?=$m->nim?>" placeholder="Masukkan NIM">
+														<input type="text" name="nim" readonly="readonly" class="form-control" value="<?=$m['nim']?>" placeholder="Masukkan NIM">
 													</div>
 													<div class="form-group">
 														<label for="exampleInputEmail1">Nama</label>
-														<input type="text" name="nama" class="form-control" value="<?=$m->nama?>" placeholder="Masukkan Nama">
+														<input type="text" name="nama" class="form-control" value="<?=$m['nama']?>" placeholder="Masukkan Nama">
 													</div>
 													<div class="form-group">
 														<label for="exampleInputEmail1">Alamat</label>
-														<input type="text" name="alamat" class="form-control" value="<?=$m->alamat?>" placeholder="Masukkan Alamat">
+														<input type="text" name="alamat" class="form-control" value="<?=$m['alamat']?>" placeholder="Masukkan Alamat">
 													</div>
 													<div class="form-group">
 														<label for="exampleInputEmail1">Tgl Lahir</label>
-														<input type="date" name="tgl_lahir" class="form-control" value="<?=$m->tgl_lahir?>" placeholder="Masukkan Tgl Lahir">
+														<input type="date" name="tgl_lahir" class="form-control" value="<?=$m['tgl_lahir']?>" placeholder="Masukkan Tgl Lahir">
 													</div>
 													<button type="submit" class="btn btn-primary">Edit</button>
 												</form>
@@ -95,7 +95,7 @@
 										</div>
 									</div>
 								</div>
-								<a onclick="return confirm('Data akan dihapus!!!')" href="<?=base_url('mahasiswa/delete/'.$m->nim)?>"><button class="btn btn-danger">Hapus</button></a>
+								<a onclick="return confirm('Data akan dihapus!!!')" href="<?=base_url('mahasiswa/delete/'.$m['nim'])?>"><button class="btn btn-danger">Hapus</button></a>
 							</td>
 
 						</tr>
